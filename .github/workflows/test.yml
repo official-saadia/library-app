@@ -9,4 +9,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '25'
-      - run: mvn test
+          cache: maven
+      - run: mvn package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: library-app-jar
+          path: target/*.jar
+          retention-days: 3
