@@ -16,7 +16,7 @@ class LibraryServiceTest {
     @Test
     void findByIdReturnsSeededBook() {
         assertThat(service.findById(1L)).isPresent();
-        assertThat(service.findById(1L).get().name()).isEqualTo("Clean Code123");
+        assertThat(service.findById(1L).get().name()).isEqualTo("Clean Code");
     }
 
     @Test
