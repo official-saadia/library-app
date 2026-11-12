@@ -1,0 +1,17 @@
+name: Environments
+on: [push]
+jobs:
+  deploy-staging:
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      APP_NAME: library-app
+    steps:
+      - run: echo "Deploying $APP_NAME to staging"
+      - run: echo "Token is ${{ secrets.DEMO_TOKEN }}"
+  deploy-production:
+    needs: deploy-staging
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - run: echo "Deploying to production"
