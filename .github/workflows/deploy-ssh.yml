@@ -1,0 +1,12 @@
+name: Deploy SSH
+on: workflow_dispatch
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "$DEPLOY_SSH_KEY" > key
+          chmod 600 key
+          ssh -i key -p 2222 -o StrictHostKeyChecking=no -o ConnectTimeout=10 deploy@localhost "echo connected"
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
