@@ -26,5 +26,7 @@ jobs:
           name: library-app-jar
       - run: |
           pkill -f library || true
-          nohup java -jar *.jar > app.log 2>&1 &
+          setsid nohup java -jar *.jar > app.log 2>&1 < /dev/null &
+        env:
+          RUNNER_TRACKING_ID: ""
       - run: ./smoke-test.sh http://localhost:8080
