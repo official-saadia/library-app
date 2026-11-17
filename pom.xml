@@ -18,7 +18,7 @@
     <description>Library REST API for learning CI/CD</description>
 
     <properties>
-        <java.version>25</java.version>
+        <java.version>17</java.version>
         <rest-assured.version>6.3.0</rest-assured.version>
     </properties>
 
