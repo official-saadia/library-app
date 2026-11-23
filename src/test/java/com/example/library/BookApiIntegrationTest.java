@@ -32,7 +32,7 @@ class BookApiIntegrationTest {
 
     @Test
     void listReturnsSeededBooks() {
-        String body = client().get().uri("/api/books").retrieve().body(String.class);
+        String body = client().get().uri("/api/book").retrieve().body(String.class);
 
         assertThat(body).contains("Clean Code").contains("Dune").contains("The Hobbit");
     }
