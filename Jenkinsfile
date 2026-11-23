@@ -28,7 +28,9 @@ pipeline {
             archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
         }
         failure {
-            echo 'Build failed: notify the team'
+            mail to: 'skhdev88@gmail.com',
+            subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+            body: "Build failed. Details: ${env.BUILD_URL}"
         }
     }
 }
