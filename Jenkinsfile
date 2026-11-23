@@ -20,4 +20,15 @@ pipeline {
             }
         }
     }
+    post {
+        always {
+            junit 'target/surefire-reports/*.xml'
+        }
+        success {
+            archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+        }
+        failure {
+            echo 'Build failed: notify the team'
+        }
+    }
 }
