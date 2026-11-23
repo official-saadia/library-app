@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    triggers {
+        githubPush()
+    }
     tools {
         maven 'maven-3'
     }
@@ -17,6 +20,13 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'mvn -B test'
+            }
+        }
+        stage('Use credential') {
+            steps {
+                withCredentials([string(credentialsId: 'deploy-token', variable: 'DEPLOY_TOKEN')]) {
+                    sh 'echo "Token is $DEPLOY_TOKEN"'
+                }
             }
         }
     }
