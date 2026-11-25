@@ -1,5 +1,7 @@
 pipeline {
     agent none
+    options { skipDefaultCheckout() }
+
     triggers { githubPush() }
     stages {
         stage('Build and test') {
