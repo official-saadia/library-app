@@ -53,7 +53,7 @@ pipeline {
         stage('Smoke test') {
             agent { label 'client' }
             steps {
-                sh 'bash smoke-test.sh http://localhost:9090'
+                sh 'bash smoke-test.sh http://localhost:8080'
             }
         }
     }
